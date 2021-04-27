@@ -29,7 +29,9 @@ public class Employees {
     private BigDecimal salary;
     private  BigDecimal commission_pct;
 
-    private Integer manager_id;
+    @ManyToOne
+    @JoinColumn(name="manager_id")
+    private Employees employees;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
@@ -117,12 +119,12 @@ public class Employees {
         this.commission_pct = commission_pct;
     }
 
-    public Integer getManager_id() {
-        return manager_id;
+    public Employees getEmployees() {
+        return employees;
     }
 
-    public void setManager_id(Integer manager_id) {
-        this.manager_id = manager_id;
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
     }
 
     public Department getDepartment() {
