@@ -10,9 +10,8 @@
 </head>
 <body class="container">
     <h2>Editar Empleado</h2><hr />
-        <form method="post" th:action="@{}" th:object="${employee}">
-            <!-- COMPLETAR -->
-
+        <form method="post" th:action="@{/employees/guardar}" th:object="${employee}">
+            <input th:field="*{employee_id}" name="id" type="hidden"/>
             <div class="row">
                 <div class="form-group col-6">
                     <label for="first_name">Nombre</label>
@@ -51,7 +50,7 @@
                 </div>
             </div>
 
-            <a th:href="@{}" class="btn btn-danger">Cancelar</a>
+            <a th:href="@{/employees}" class="btn btn-danger">Cancelar</a>
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
     </body>

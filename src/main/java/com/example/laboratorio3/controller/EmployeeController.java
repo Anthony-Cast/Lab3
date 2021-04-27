@@ -20,18 +20,18 @@ public class EmployeeController {
     @Autowired
     EmployeesRepository employeesRepository;
 
-    @GetMapping
+    @GetMapping(value = {"", "/", "listar"})
     public String listaEmployee(Model model){
         model.addAttribute("listaEmpleados", employeesRepository.findAll());
         return "employee/lista";
     }
 
-    @GetMapping
+    @GetMapping("/nuevo")
     public String nuevoEmployeeForm( ) {
        return "employee/newFrm";
     }
 
-    @PostMapping
+    @PostMapping("/guardar")
     public String guardarEmployee(Employees employees, RedirectAttributes redirectAttributes) {
         if (employees.getEmployee_id() == 0) {
             redirectAttributes.addFlashAttribute("msg", "Empleado creado exitosamente");
@@ -63,7 +63,4 @@ public class EmployeeController {
         }
             return "redirect:/employees";
     }
-
-    //COMPLETAR
-
 }

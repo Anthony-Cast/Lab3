@@ -9,49 +9,48 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 </head>
 <body class="container">
-    <h2>Nuevo Empleado</h2><hr />
-        <form method="post" th:action="@{}">                <!-- COMPLETAR -->
-            <div class="row">
-                <div class="form-group col-6">
-                    <!-- COMPLETAR -->
-                </div>
-                <div class="form-group col-6">
-                    <!-- COMPLETAR -->
-                </div>
-            </div>
+<h2>Nuevo Empleado</h2><hr />
+<form method="post" th:action="@{/employees/guardar}">
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="first_name">Nombre</label>
+            <input type="text" class="form-control" name="first_name" id="first_name">
+        </div>
+        <div class="form-group col-6">
+            <label for="last_name">Apellido</label>
+            <input type="text" class="form-control" name="last_name" id="last_name">
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="form-group col-6">
-                    <!-- COMPLETAR -->
-                </div>
-                <div class="form-group col-6">
-                    <!-- COMPLETAR -->
-                </div>
-            </div>
+    <div class="form-group">
+        <label for="email">Correo Electónico</label>
+        <input type="text" class="form-control" name="email" id="email">
+    </div>
 
-            <div class="row">
-                <div class="form-group col-6">
-                    <!-- COMPLETAR -->
-                </div>
-                <div class="form-group col-6">
-                    <!-- COMPLETAR -->
-                </div>
-            </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="job">Puesto</label>
+            <select class="form-control" name="job" id="job"></select>
+        </div>
+        <div class="form-group col-6">
+            <label for="salary">Sueldo</label>
+            <input  type="text" class="form-control" name="salary" id="salary">
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="form-group col-6">
-                    <!-- COMPLETAR -->
-                </div>
-                <div class="form-group col-6">
-                    <!-- COMPLETAR -->
-                </div>
-            </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="manager">Jefe</label>
+            <select class="form-control" name="manager" id="manager"></select>
+        </div>
+        <div class="form-group col-6">
+            <label for="department">Departamento</label>
+            <select class="form-control" name="department" id="department"></select>
+        </div>
+    </div>
 
-            <a th:href="@{}" class="btn btn-danger"></a>                 <!-- COMPLETAR -->
-            <button type="submit" class="btn btn-primary"></button>                <!-- COMPLETAR -->
-            <div class="row">
-                <div class="form-group"></div>
-            </div>
-        </form>
-    </body>
+    <a th:href="@{/employees}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+</body>
 </html>
