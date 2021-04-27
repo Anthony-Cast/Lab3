@@ -11,16 +11,16 @@
 <body>
     <div class="container">
         <h1>Lista de Empleados</h1>
-        <a class="btn btn-primary mt-4 mb-4" th:href="@{/employees/nuevo}"></a>                 <!-- COMPLETAR -->
-        <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
-            <!-- COMPLETAR -->
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{/employees/nuevo}">Nuevo Empleado</a>
+
+        <form class="form-inline mb-3" method="post" th:action="@{/employees/buscar}">
             <div class="input-group-append">
-                <!-- COMPLETAR -->
+                <input class="form-control mr-2" placeholder="Texto a buscar" name="searchName">
+                <button class="btn btn-outline-info" type="submit">Buscar</button>
+                <a class="btn btn-outline-danger ml-2" th:href="@{/employees}">Limpiar</a>
             </div>
         </form>
 
-        <!-- COMPLETAR -->
-        <!-- COMPLETAR -->
             <table class="table table-sm" th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert">
                 <thead>
                 <tr>
@@ -39,8 +39,8 @@
                     <td th:text="${info.index + 1}"></td>
                     <td th:text="${employee.first_name}"></td>
                     <td th:text="${employee.last_name}"></td>
-                    <td th:text="${employee.job}"></td>
-                    <td th:text="${employee.department}"></td>
+                    <td th:text="${employee.job.job_name}"></td>
+                    <td th:text="${employee.department.department_name}"></td>
                     <td th:text="${employee.hire_date}"></td>
                     <td><a class="btn btn-primary" th:href="@{'/employee/editar?id=' + ${employee.employee_id}}">Editar</a>
                     </td>
