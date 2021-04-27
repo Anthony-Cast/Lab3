@@ -10,42 +10,49 @@
 </head>
 <body class="container">
     <h2>Editar Empleado</h2><hr />
-        <form method="post" th:action="@{}">
+        <form method="post" th:action="@{}" th:object="${employee}">
             <!-- COMPLETAR -->
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Nombre</label>
+                    <input th:field="*{first_name}" type="text" class="form-control" name="first_name" id="first_name">
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="last_name">Apellido</label>
+                    <input th:field="*{last_name}" type="text" class="form-control" name="last_name" id="last_name">
                 </div>
             </div>
 
             <div class="form-group">
-                <!-- COMPLETAR -->
+                <label for="email">Correo Electónico</label>
+                <input th:field="*{email}" type="text" class="form-control" name="email" id="email">
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Puesto</label>
+                    <input th:field="*{first_name}" type="text" class="form-control" name="first_name" id="first_name">
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="salary">Salario</label>
+                    <input th:field="*{salary}" type="text" class="form-control" name="salary" id="salary">
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Jefe</label>
+                    <input th:field="*{first_name}" type="text" class="form-control" name="first_name" id="first_name">
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Departamento</label>
+                    <input th:field="*{first_name}" type="text" class="form-control" name="first_name" id="first_name">
                 </div>
             </div>
 
-            <a th:href="@{}" class="btn btn-danger"></a>                 <!-- COMPLETAR -->
-            <!-- COMPLETAR -->
+            <a th:href="@{}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
     </body>
 </html>
