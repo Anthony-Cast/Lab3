@@ -9,9 +9,8 @@ import java.time.LocalDateTime;
 public class Employees {
 
     @Id
-    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer employee_id;
+    private int employee_id;
 
     private String first_name;
 

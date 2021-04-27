@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.sound.midi.Soundbank;
 import java.sql.SQLOutput;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -32,9 +33,7 @@ public class EmployeeController {
 
     @GetMapping(value = {"", "/", "listar"})
     public String listaEmployee(Model model){
-        System.out.println("LLEGAMOS AQUI");
         model.addAttribute("listaEmpleados", employeesRepository.findAll());
-        System.out.println("SEGUNDO LLEGAMOS");
         return "employee/lista";
     }
 
@@ -68,6 +67,14 @@ public class EmployeeController {
         } else {
             return "redirect:/employees";
         }
+    }
+
+    @PostMapping("/buscar")
+    public String searchEmpleado(@RequestParam("name") String name, Model model) {
+
+        List<Employees> employeesOpt = employeesRepository.listarEmpleadosPorNombreApellidoDepartamentoPuestoCiudad(name);
+        model.addAttribute("listaEmpleados",employeesOpt);
+        return "employee/lista";
     }
 
     @GetMapping("/borrar")
