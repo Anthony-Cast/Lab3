@@ -1,5 +1,6 @@
 package com.example.laboratorio3.controller;
 
+import com.example.laboratorio3.entity.Department;
 import com.example.laboratorio3.entity.Employees;
 import com.example.laboratorio3.repository.DepartmentRepository;
 import com.example.laboratorio3.repository.EmployeesRepository;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.sound.midi.Soundbank;
 import java.sql.SQLOutput;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,20 +42,35 @@ public class EmployeeController {
 
     @GetMapping("/nuevo")
     public String nuevoEmployeeForm(Model model) {
+
        model.addAttribute("listaDepartamentos", departmentRepository.findAll());
+       List<Department> departmentOpt = departmentRepository.findAll();
+       List<Department> departamentosFinales = new ArrayList<Department>();
+       for (Department i : departmentOpt){
+           if(i.getEmployees() != null){
+               departamentosFinales.add(i);
+           }
+       }
        model.addAttribute("listaTrabajos", jobRepository.findAll());
-       model.addAttribute("listaJefes", employeesRepository.findAll());
-        return "employee/newFrm";
+       model.addAttribute("listaDepartamentosconJefes", departamentosFinales);
+
+       Employees empleadoUtil = new Employees();
+       empleadoUtil.setHire_date(LocalDateTime.now());
+
+        model.addAttribute("empleadoUtil", empleadoUtil);
+
+       return "employee/newFrm";
     }
 
     @PostMapping("/guardar")
-    public String guardarEmployee(Employees employees, RedirectAttributes redirectAttributes) {
-        if (employees.getEmployee_id() == 0) {
+    public String guardarEmployee(Employees employee, RedirectAttributes redirectAttributes) {
+        System.out.println("PRIMER TRACE");
+        if (employee.getEmployee_id() == 0) {
             redirectAttributes.addFlashAttribute("msg", "Empleado creado exitosamente");
         } else {
             redirectAttributes.addFlashAttribute("msg", "Empleado actualizado exitosamente");
         }
-        employeesRepository.save(employees);
+        employeesRepository.save(employee);
         return "redirect:/employees";
     }
 
@@ -63,7 +81,15 @@ public class EmployeeController {
             Employees employees = employeesOptional.get();
             model.addAttribute("employee", employees);
             model.addAttribute("listaDepartamentos", departmentRepository.findAll());
+            List<Department> departmentOpt = departmentRepository.findAll();
+            List<Department> departamentosFinales = new ArrayList<Department>();
+            for (Department i : departmentOpt){
+                if(i.getEmployees() != null){
+                    departamentosFinales.add(i);
+                }
+            }
             model.addAttribute("listaTrabajos", jobRepository.findAll());
+            model.addAttribute("listaDepartamentosconJefes", departamentosFinales);
             return "employee/editFrm";
         } else {
             return "redirect:/employees";
