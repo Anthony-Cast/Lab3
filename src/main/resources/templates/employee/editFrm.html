@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/navbar.html :: header( title = 'Editar Empleado')"></head>
 <body class="container">
+<nav th:replace="fragments/navbar.html :: navbar( active = 'Empleados')"></nav>
     <h2>Editar Empleado</h2><hr />
         <form method="post" th:action="@{/employees/guardar}" th:object="${employee}">
             <input th:field="*{employee_id}" name="id" type="hidden"/>

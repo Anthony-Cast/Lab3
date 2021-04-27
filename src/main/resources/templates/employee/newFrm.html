@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/navbar.html :: header( title = 'Nuevo Empleado')"></head>
 <body class="container">
+<nav th:replace="fragments/navbar.html :: navbar( active = 'Empleados')"></nav>
 <h2>Nuevo Empleado</h2><hr />
 <form method="post" th:action="@{/employees/guardar}">
     <div class="row">
