@@ -7,20 +7,25 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="employees")
 public class Employees {
+
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer employee_id;
+
     private String first_name;
+
     @Column(nullable = false)
     private String last_name;
+
     @Column(nullable = false,unique = true)
     private String email;
+
     private String password;
     private String phone_number;
+
     @Column(nullable = false)
     private LocalDateTime hire_date;
-    @Column(nullable = false)
 
     @ManyToOne
     @JoinColumn(name = "job_id")

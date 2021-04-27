@@ -7,20 +7,19 @@ import javax.persistence.*;
 public class Countries {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int country_id;
+    private String country_id;
 
     private String country_name;
 
     @ManyToOne
-    @Column(name="region_id")
+    @JoinColumn(name="region_id")
     private Region region;
 
-    public int getCountry_id() {
+    public String getCountry_id() {
         return country_id;
     }
 
-    public void setCountry_id(int country_id) {
+    public void setCountry_id(String country_id) {
         this.country_id = country_id;
     }
 

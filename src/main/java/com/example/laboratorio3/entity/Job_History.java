@@ -1,11 +1,12 @@
 package com.example.laboratorio3.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="job_history")
-public class Job_History {
+public class Job_History implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +14,7 @@ public class Job_History {
 
     @Id
     @ManyToOne
-    @Column(name="employee_id")
+    @JoinColumn(name="employee_id")
     private Employees employees;
 
     @Id
@@ -22,11 +23,11 @@ public class Job_History {
     private LocalDateTime end_date;
 
     @ManyToOne
-    @Column(name="job_id")
+    @JoinColumn(name="job_id")
     private Job job;
 
     @ManyToOne
-    @Column(name="department_id")
+    @JoinColumn(name="department_id")
     private Department department;
 
     public int getJob_history_id() {

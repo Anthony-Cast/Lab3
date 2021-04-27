@@ -14,11 +14,11 @@ public class Department {
     private String department_name;
 
     @ManyToOne
-    @Column(name ="manager_id")
+    @JoinColumn(name ="manager_id")
     private Employees employees;
 
     @ManyToOne
-    @Column(name="location_id")
+    @JoinColumn(name="location_id")
     private Location location;
 
     public int getDepartment_id() {

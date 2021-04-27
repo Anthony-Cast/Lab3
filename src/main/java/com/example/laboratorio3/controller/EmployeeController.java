@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.jws.WebParam;
+import javax.sound.midi.Soundbank;
+import java.sql.SQLOutput;
 import java.util.Optional;
 
 @Controller
@@ -31,7 +32,9 @@ public class EmployeeController {
 
     @GetMapping(value = {"", "/", "listar"})
     public String listaEmployee(Model model){
+        System.out.println("LLEGAMOS AQUI");
         model.addAttribute("listaEmpleados", employeesRepository.findAll());
+        System.out.println("SEGUNDO LLEGAMOS");
         return "employee/lista";
     }
 

@@ -1,25 +1,22 @@
 package com.example.laboratorio3.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="regions")
 public class Region {
 
     @Id
-    @GeneratedValue
-    private int region_id;
+    private BigDecimal region_id;
 
     private String region_name;
 
-    public int getRegion_id() {
+    public BigDecimal getRegion_id() {
         return region_id;
     }
 
-    public void setRegion_id(int region_id) {
+    public void setRegion_id(BigDecimal region_id) {
         this.region_id = region_id;
     }
 

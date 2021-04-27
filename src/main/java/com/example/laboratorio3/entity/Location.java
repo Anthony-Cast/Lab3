@@ -19,7 +19,7 @@ public class Location {
     private String state_province;
 
     @ManyToOne
-    @Column(name="country_id")
+    @JoinColumn(name="country_id")
     private Countries countries;
 
     public int getLocation_id() {
