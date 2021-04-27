@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevo Empleado</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-</head>
+<head th:replace="fragments/navbar.html :: header( title = 'Editar Empleado')"></head>
 <body class="container">
     <h2>Editar Empleado</h2><hr />
         <form method="post" th:action="@{/employees/guardar}" th:object="${employee}">
@@ -34,7 +27,7 @@
                     <select th:field="${employee.job}">
                         <option th:each="trabajo: ${listaTrabajos}"
                                 th:value="${trabajo.job_id}"
-                                th:text="${trabajo.job_name}"
+                                th:text="${trabajo.job_title}"
                                 th:selected="${trabajo.job_id == employee.job.job_id}"></option>
                     </select>
                 </div>

@@ -41,6 +41,7 @@ public class EmployeeController {
     public String nuevoEmployeeForm(Model model) {
        model.addAttribute("listaDepartamentos", departmentRepository.findAll());
        model.addAttribute("listaTrabajos", jobRepository.findAll());
+       model.addAttribute("listaJefes", employeesRepository.findAll());
         return "employee/newFrm";
     }
 
