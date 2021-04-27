@@ -6,20 +6,17 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name="job_history")
-public class Job_History implements Serializable {
+public class Job_History{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int job_history_id;
 
-    @Id
     @ManyToOne
     @JoinColumn(name="employee_id")
     private Employees employees;
 
-    @Id
     private LocalDateTime start_date;
-
     private LocalDateTime end_date;
 
     @ManyToOne

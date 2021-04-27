@@ -13,13 +13,13 @@
     <h1>Historial de Empleados</h1>
     <form class="form-inline mb-3" method="post" th:action="@{/historial/buscar}">
         <div class="input-group-append">
-            <input class="form-control mr-2" placeholder="Texto a buscar" name="searchName">
+            <input class="form-control mr-2" placeholder="Texto a buscar" name="name">
             <button class="btn btn-outline-info" type="submit">Buscar</button>
-            <a class="btn btn-outline-danger ml-2" th:href="@{/historial}">Limpiar</a>
+            <a class="btn btn-outline-danger ml-2" th:href="@{/historial/historial}">Limpiar</a>
         </div>
     </form>
 
-    <table class="table table-sm" th:if="${}">
+    <table class="table table-sm">
         <thead>
         <tr>
             <th>Nombre</th>
@@ -33,7 +33,7 @@
         <tr th:each="historial: ${listaHistorial}">
             <td th:text="${historial.employees.first_name}"></td>
             <td th:text="${historial.employees.last_name}"></td>
-            <td th:text="${historial.job.job_name}"></td>
+            <td th:text="${historial.job.job_title}"></td>
             <td th:text="${historial.department.department_name}"></td>
             <td th:text="${historial.start_date}"></td>
         </tr>
