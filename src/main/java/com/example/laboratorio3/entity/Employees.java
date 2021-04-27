@@ -28,6 +28,7 @@ public class Employees {
 
     private BigDecimal salary;
     private  BigDecimal commission_pct;
+
     private Integer manager_id;
 
     @ManyToOne
