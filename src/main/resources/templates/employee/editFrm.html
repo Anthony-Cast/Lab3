@@ -31,7 +31,12 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label for="first_name">Puesto</label>
-                    <input th:field="*{first_name}" type="text" class="form-control" name="first_name" id="first_name">
+                    <select th:field="${employee.job}">
+                        <option th:each="trabajo: ${listaTrabajos}"
+                                th:value="${trabajo.job_id}"
+                                th:text="${trabajo.job_name}"
+                                th:selected="${trabajo.job_id == employee.job.job_id}"></option>
+                    </select>
                 </div>
                 <div class="form-group col-6">
                     <label for="salary">Salario</label>
@@ -46,7 +51,12 @@
                 </div>
                 <div class="form-group col-6">
                     <label for="first_name">Departamento</label>
-                    <input th:field="*{first_name}" type="text" class="form-control" name="first_name" id="first_name">
+                    <select th:field="${employee.department}">
+                    <option th:each="departamento: ${listaDepartamentos}"
+                            th:value="${departamento.department_id}"
+                            th:text="${departamento.department_name}"
+                            th:selected="${departamento.department_id == employee.department.department_id}"></option>
+                    </select>
                 </div>
             </div>
 
