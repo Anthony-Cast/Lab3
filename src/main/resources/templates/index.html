@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/navbar.html :: header( title = 'Gestion de Laboratorio')"></head>
 <body class="container">
+<nav th:replace="fragments/navbar.html :: navbar( active = ' ')"></nav>
 <h1>Gestión de Laboratorio 3</h1>
 <a th:href="@{/employees}">Ir a la gestión de empleados</a><br />
 <a th:href="@{/historial}">Ir al historial de empleados</a><br />

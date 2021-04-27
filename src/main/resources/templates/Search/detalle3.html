@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/navbar.html :: header( title = 'Lista de Empleados')"></head>
+<head th:replace="fragments/navbar.html :: header( title = 'Reporte de departamento por país y ciudad')"></head>
 <body>
 <div class="container">
     <nav th:replace="fragments/navbar.html :: navbar( active = 'Reporte Visual')"></nav>
 
-    <h1>Lista de Empleados</h1>
+    <h1>Reporte de departamento por país y ciudad</h1>
     <a class="btn btn-primary mt-4 mb-4" th:href="@{/busqueda}">Regresar</a>
 
     <table class="table">

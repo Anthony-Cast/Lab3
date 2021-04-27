@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/navbar.html :: header( title = 'Lista de Empleados')"></head>
+<head th:replace="fragments/navbar.html :: header( title = 'Empleados con Mayor Salario a 15000')"></head>
 <body>
 <div class="container">
     <nav th:replace="fragments/navbar.html :: navbar( active = 'Reporte Visual')"></nav>
 
-    <h1>Lista de Empleados</h1>
+    <h1>Empleados con Mayor Salario a 15000</h1>
     <a class="btn btn-primary mt-4 mb-4" th:href="@{/busqueda}">Regresar</a>
 
     <table class="table">
