@@ -63,8 +63,9 @@ public class EmployeeController {
     }
 
     @PostMapping("/guardar")
-    public String guardarEmployee(Employees employee, RedirectAttributes redirectAttributes) {
-        System.out.println("PRIMER TRACE");
+    public String guardarEmployee(@RequestParam("manager_id") int manager,Employees employee, RedirectAttributes redirectAttributes) {
+        Optional<Employees> emplo= employeesRepository.findById(manager);
+        employee.setEmployees(emplo.get());
         if (employee.getEmployee_id() == 0) {
             redirectAttributes.addFlashAttribute("msg", "Empleado creado exitosamente");
         } else {

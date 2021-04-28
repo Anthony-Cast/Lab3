@@ -37,9 +37,9 @@
                     <td th:text="${employee.job.job_title}"></td>
                     <td th:text="${employee.department.department_name}"></td>
                     <td th:text="${employee.department.location.city}"></td>
-                    <td><a class="btn btn-primary" th:href="@{'/employee/editar?id=' + ${employee.employee_id}}">Editar</a>
+                    <td><a class="btn btn-primary" th:href="@{'/employees/editar?id=' + ${employee.employee_id}}">Editar</a>
                     </td>
-                    <td><a class="btn btn-danger" th:href="@{'/employee/borrar?id=' + ${employee.employee_id}}">Borrar</a>
+                    <td><a class="btn btn-danger" th:href="@{'/employees/borrar?id=' + ${employee.employee_id}}">Borrar</a>
                     </td>
                 </tr>
                 </tbody>

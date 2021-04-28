@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label for="first_name">Puesto</label>
-                    <select th:field="${employee.job}">
+                    <select class="form-control" th:field="${employee.job}">
                         <option th:each="trabajo: ${listaTrabajos}"
                                 th:value="${trabajo.job_id}"
                                 th:text="${trabajo.job_title}"
@@ -40,12 +40,14 @@
 
             <div class="row">
                 <div class="form-group col-6">
-                    <label for="first_name">Jefe</label>
-                    <input th:field="*{first_name}" type="text" class="form-control" name="first_name" id="first_name">
+                    <label for="manager_id">Jefe</label>
+                    <select class="form-control" name="manager_id" id="manager_id">
+                        <option th:each="jefe: ${listaDepartamentosconJefes}" th:value="${jefe.employees.employee_id}" th:text="${jefe.employees.first_name} + ' ' + ${jefe.employees.last_name}"></option>
+                    </select>
                 </div>
                 <div class="form-group col-6">
                     <label for="first_name">Departamento</label>
-                    <select th:field="${employee.department}">
+                    <select class="form-control" th:field="${employee.department}">
                     <option th:each="departamento: ${listaDepartamentos}"
                             th:value="${departamento.department_id}"
                             th:text="${departamento.department_name}"
