@@ -63,14 +63,26 @@ public class EmployeeController {
     }
 
     @PostMapping("/guardar")
-    public String guardarEmployee(Employees employee, RedirectAttributes redirectAttributes) {
-        System.out.println("PRIMER TRACE");
-        if (employee.getEmployee_id() == 0) {
+    public String guardarEmployee(Employees empleado, RedirectAttributes redirectAttributes) {
+        System.out.println("Employee ID del empleado nuevo:");
+        System.out.println(empleado.getEmployee_id());
+        System.out.println("Employee ID del jefe del empleado nuevo:");
+        Employees nuevo = empleado.getEmployees();
+        System.out.println(nuevo.getEmployee_id());
+
+        empleado.setEmployee_id(0);
+        System.out.println("Employee ID del empleado nuevo:");
+        System.out.println(empleado.getEmployee_id());
+        System.out.println("Employee ID del jefe del empleado nuevo:");
+        System.out.println(nuevo.getEmployee_id());
+
+        if (empleado.getEmployee_id() == 0) {
             redirectAttributes.addFlashAttribute("msg", "Empleado creado exitosamente");
         } else {
             redirectAttributes.addFlashAttribute("msg", "Empleado actualizado exitosamente");
         }
-        employeesRepository.save(employee);
+        System.out.println("SEGUNDO TRACE");
+        //employeesRepository.save(empleado);
         return "redirect:/employees";
     }
 
