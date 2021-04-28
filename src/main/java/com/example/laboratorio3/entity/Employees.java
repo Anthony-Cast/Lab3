@@ -31,7 +31,7 @@ public class Employees {
     private Job job;
 
     private BigDecimal salary;
-    private  BigDecimal commission_pct;
+    private BigDecimal commission_pct;
 
     @ManyToOne
     @JoinColumn(name="manager_id")
