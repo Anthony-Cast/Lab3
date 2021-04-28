@@ -65,19 +65,24 @@ public class EmployeeController {
         Optional<Employees> emplo= employeesRepository.findById(manager);
         employee.setEmployees(emplo.get());
         if (employee.getEmployee_id() == 0) {
-            redirectAttributes.addFlashAttribute("msg", "Empleado creado exitosamente");
+            redirectAttributes.addFlashAttribute("msg1", "Empleado creado exitosamente");
         } else {
-            redirectAttributes.addFlashAttribute("msg", "Empleado actualizado exitosamente");
+            redirectAttributes.addFlashAttribute("msg2", "Empleado actualizado exitosamente");
         }
         employeesRepository.save(employee);
         return "redirect:/employees";
     }
 
     @GetMapping("/editar")
-    public String editarEmployee(Model model, @RequestParam("id") int id) {
+    public String editarEmployee(Model model, @RequestParam("id") int id, RedirectAttributes redirectAttributes ) {
         Optional<Employees> employeesOptional = employeesRepository.findById(id);
         if (employeesOptional.isPresent()) {
             Employees employees = employeesOptional.get();
+            Employees emplo = new Employees();
+            if((emplo = employees.getEmployees()) == null){
+                redirectAttributes.addFlashAttribute("nohayjefe", "No puedes editar al jefe");
+                return "redirect:/employees";
+            }
             model.addAttribute("employee", employees);
             model.addAttribute("listaDepartamentos", departmentRepository.findAll());
             List<Department> departmentOpt = departmentRepository.findAll();
@@ -108,7 +113,7 @@ public class EmployeeController {
         Optional<Employees> employeesOptional = employeesRepository.findById(id);
         if (employeesOptional.isPresent()) {
             employeesRepository.deleteById(id);
-            redirectAttributes.addFlashAttribute("msg", "Empleado borrado exitosamente");
+            redirectAttributes.addFlashAttribute("msg3", "Empleado borrado exitosamente");
         }
             return "redirect:/employees";
     }

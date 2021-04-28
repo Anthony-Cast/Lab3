@@ -6,10 +6,10 @@
 <div class="container">
     <nav th:replace="fragments/navbar.html :: navbar( active = 'Historial')"></nav>
     <h1>Historial de Empleados</h1>
-    <form class="form-inline mb-3" method="post" th:action="@{/historial/buscar}">
+    <form class="form-group mb-3" method="post" th:action="@{/historial/buscar}">
         <div class="input-group-append">
             <input class="form-control mr-2" placeholder="Texto a buscar" name="name">
-            <button class="btn btn-outline-info" type="submit">Buscar</button>
+            <button class="btn btn-outline-primary" type="submit">Buscar</button>
             <a class="btn btn-outline-danger ml-2" th:href="@{/historial/historial}">Limpiar</a>
         </div>
     </form>
