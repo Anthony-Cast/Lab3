@@ -18,9 +18,9 @@
         </thead>
         <tbody>
         <tr th:each="detalle: ${detalleEmpleados}">
-            <td th:text="${detalle.pais}"></td>
-            <td th:text="${detalle.ciudad}"></td>
-            <td th:text="${detalle.cantidad}"></td>
+            <td th:text="${detalle.getPais()}"></td>
+            <td th:text="${detalle.getCiudad()}"></td>
+            <td th:text="${detalle.getCantidad()}"></td>
         </tr>
         </tbody>
     </table>

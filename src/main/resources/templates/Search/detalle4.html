@@ -11,20 +11,18 @@
     <table class="table">
         <thead>
         <tr>
+            <th>Departamento</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Fecha de Inicio</th>
-            <th>Fecha Fin</th>
-            <th>Puesto</th>
+            <th>Salario</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="detalle: ${detalleEmpleados}">
-            <td th:text="${detalle.nombre}"></td>
-            <td th:text="${detalle.apellido}"></td>
-            <td th:text="${detalle.fechainicio}"></td>
-            <td th:text="${detalle.fechafin}"></td>
-            <td th:text="${detalle.puesto}"></td>
+            <td th:text="${detalle.getDepartment()}"></td>
+            <td th:text="${detalle.getNombre()}"></td>
+            <td th:text="${detalle.getApellido()}"></td>
+            <td th:text="${detalle.getSalary()}"></td>
         </tr>
         </tbody>
     </table>

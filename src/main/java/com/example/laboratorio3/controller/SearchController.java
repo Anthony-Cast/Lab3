@@ -34,7 +34,7 @@ public class SearchController {
     }
     @GetMapping("/detalle4")
     public String detalleEmpleados4(Model model){
-        model.addAttribute("detalleEmpleados",employeesRepository.obtenerDetalle3());
+        model.addAttribute("detalleEmpleados",employeesRepository.obtenerDetalle4());
         return "Search/detalle4";
     }
 }

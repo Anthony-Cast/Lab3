@@ -3,6 +3,7 @@ package com.example.laboratorio3.repository;
 
 import com.example.laboratorio3.dto.DetalleDepxPaisyCiudad;
 import com.example.laboratorio3.dto.DetalleEmpleados;
+import com.example.laboratorio3.dto.DetalleMasAnios;
 import com.example.laboratorio3.dto.SalarioMaxDep;
 import com.example.laboratorio3.entity.Employees;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -35,4 +36,10 @@ public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
             "                        having count(employee_id)>3)\n" +
             "group by c.country_name, l.city",nativeQuery = true)
     List<DetalleDepxPaisyCiudad> obtenerDetalle3();
+    @Query(value="select d.department_name as department,e.first_name as nombre,e.last_name as apellido,e.salary as salary\n" +
+            "from departments d inner join employees e\n" +
+            "on d.manager_id = e.employee_id\n" +
+            "where datediff(now(),e.hire_date)/365>5\n" +
+            "order by salary desc",nativeQuery = true)
+    List<DetalleMasAnios> obtenerDetalle4();
 }

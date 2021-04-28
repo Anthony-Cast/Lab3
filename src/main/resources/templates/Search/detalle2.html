@@ -20,10 +20,10 @@
         </thead>
         <tbody>
         <tr th:each="detalle: ${detalleEmpleados}">
-            <td th:text="${detalle.nombre}"></td>
-            <td th:text="${detalle.apellido}"></td>
-            <td th:text="${detalle.departamento}"></td>
-            <td th:text="${detalle.salario}"></td>
+            <td th:text="${detalle.getNombre()}"></td>
+            <td th:text="${detalle.getApellido()}"></td>
+            <td th:text="${detalle.getDepartamento()}"></td>
+            <td th:text="${detalle.getSalario()}"></td>
         </tr>
         </tbody>
     </table>
