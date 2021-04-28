@@ -80,7 +80,7 @@ public class EmployeeController {
             Employees employees = employeesOptional.get();
             Employees emplo = new Employees();
             if((emplo = employees.getEmployees()) == null){
-                redirectAttributes.addFlashAttribute("nohayjefe", "No puedes editar al jefe");
+                redirectAttributes.addFlashAttribute("nohayjefe", "No puedes editar a este usuario. MANAGER_ID = NULL");
                 return "redirect:/employees";
             }
             model.addAttribute("employee", employees);
@@ -112,6 +112,12 @@ public class EmployeeController {
     public String borrarEmpleado(Model model, @RequestParam("id") int id, RedirectAttributes redirectAttributes) {
         Optional<Employees> employeesOptional = employeesRepository.findById(id);
         if (employeesOptional.isPresent()) {
+            Employees employees = employeesOptional.get();
+            Employees emplo = new Employees();
+            if((emplo = employees.getEmployees()) == null){
+                redirectAttributes.addFlashAttribute("nohayjefe", "No puedes borrar al jefe");
+                return "redirect:/employees";
+            }
             employeesRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("msg3", "Empleado borrado exitosamente");
         }
